@@ -23,9 +23,7 @@ html {
 body {
   background-image: url('../../src/GigabyteStrix.png');
   margin: 0;
-  background-size: {
-    'auto',
-  };
+  background-size: cover;
 }
 
 /**
@@ -77,6 +75,8 @@ pre {
   font-family: 'Wallpoet', cursive;
   color: white;
   font-size: 64;
+  line-height: 5px;
+  margin-left: 60px;
 }
 
 .ulogo {
@@ -84,29 +84,76 @@ pre {
   color: white;
   font-size: 40;
   align-items: left;
-  margin: 0;
-  padding: 0;
+  line-height: 30px;
+  float: left;
+  margin-top: 140px;
+  margin-left: 25px;
 }
 
 .links {
   font-family: 'Wallpoet', cursive;
   color: white;
   font-size: 46;
-  align-items: right;
+  padding: 20px 50px;
 }
 
 nav {
-  list-style-type: none;
   position: absolute;
   padding-top: 20;
   padding-left: 40;
   align-items: center;
+  overflow: hidden;
 }
 
 li {
+  list-style-type: none;
   float: right;
+  align-items: center;
 }
 
+.navrow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 750px;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  column-width: 1920px;
+}
+
+.login {
+  font-family: 'Wallpoet', cursive;
+  color: white;
+  font-size: 40;
+}
+
+.loginbutton {
+  font-family: 'Wallpoet', cursive;
+  color: white;
+  font-size: 35;
+}
+
+input{
+  background-color: #424242;
+  color: white;
+  border: hidden;
+}
+
+form{
+  width: 450px;
+}
 
 /**
  * Remove the gray background on active links in IE 10.
@@ -439,7 +486,7 @@ ol,
 ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  align-items: center;
 }
 
 /**
@@ -520,24 +567,24 @@ textarea {
 }
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-  color: #a0aec0;
+  color: white;
 }
 
 input::-moz-placeholder, textarea::-moz-placeholder {
-  color: #a0aec0;
+  color: white;
 }
 
 input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-  color: #a0aec0;
+  color: white;
 }
 
 input::-ms-input-placeholder, textarea::-ms-input-placeholder {
-  color: #a0aec0;
+  color: white;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #a0aec0;
+  color: white;
 }
 
 button,
