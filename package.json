@@ -1,17 +1,27 @@
 {
-  "name": "BPP",
+  "name": "bpp",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "postcss css/tailwind.css -o public/build/tailwind.css"
+    "build": "postcss static/src/css/tailwind.css -o static/src/build/tailwind.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^9.7.4",
+    "express": "^4.17.1",
     "postcss-cli": "^7.1.0",
     "tailwindcss": "^1.2.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cuslika/JS_HW.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cuslika/JS_HW/issues"
+  },
+  "homepage": "https://github.com/Cuslika/JS_HW#readme",
+  "description": ""
 }
