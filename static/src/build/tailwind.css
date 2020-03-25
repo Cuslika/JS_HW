@@ -145,15 +145,18 @@ li {
   font-size: 35;
 }
 
-input{
+
+
+input[id="username"], [id="password"], [id="email"], select {
   background-color: #424242;
   color: white;
   border: hidden;
 }
 
-input:focus{
+input[id="username"]:focus, [id="password"]:focus, [id="email"]:focus{
   background-color: #424242;
   color: white;
+  border: hidden;
   border: 2px solid #fff;
   outline: none;
 }
