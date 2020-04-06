@@ -13,21 +13,11 @@ const saveUserMW = require('../middleware/user/saveUserMW');
 
 module.exports = function(app) {
     const objRepo = {};
-
-    app.use('/',
-    checkUserLoginMW(objRepo),
-    sendPwMW(objRepo),
-    renderMW(objRepo, 'index'));
-
-    app.get('/user',
-    authMW(objRepo),
-    getUserMW(objRepo),
-    getUserByEmailMW(objRepo),
-    renderMW(objRepo, 'userlist'));
+    
     app.use('/user/new',
     authMW(objRepo),
     saveUserMW(objRepo),
-    renderMW(objRepo, 'newuser'));
+    renderMW(objRepo, 'signin'));
     app.use('/user/edit/:userid',
     authMW(objRepo),
     getUserMW(objRepo),
@@ -37,18 +27,17 @@ module.exports = function(app) {
     authMW(objRepo),
     getUserMW(objRepo),
     delUserMW(objRepo));
-
-    app.get('/order/:userid',
+    app.get('/user',
     authMW(objRepo),
     getUserMW(objRepo),
-    getOrderMW(objRepo),
-    getOrdersMW(objRepo),
-    renderMW(objRepo, 'usersorders'));
+    getUserByEmailMW(objRepo),
+    renderMW(objRepo, 'login'));
+    
     app.use('/order/userid/new',
     authMW(objRepo),
     getUserMW(objRepo),
     saveOrderMW(objRepo),
-    renderMW(objRepo, 'neworder'));
+    renderMW(objRepo, 'neworders'));
     app.use('/order/:userid/edit/:orderid',
     authMW(objRepo),
     getUserMW(objRepo),
@@ -60,6 +49,15 @@ module.exports = function(app) {
     getUserMW(objRepo),
     getOrderMW(objRepo),
     delOrderMW(objRepo));
+    app.get('/order/:userid',
+    authMW(objRepo),
+    getUserMW(objRepo),
+    getOrderMW(objRepo),
+    getOrdersMW(objRepo),
+    renderMW(objRepo, 'orders'));
 
-
-}
+    app.use('/',
+    checkUserLoginMW(objRepo),
+    sendPwMW(objRepo),
+    renderMW(objRepo, 'index'));
+};
