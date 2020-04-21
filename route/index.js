@@ -18,46 +18,60 @@ module.exports = function(app) {
     authMW(objRepo),
     saveUserMW(objRepo),
     renderMW(objRepo, 'signin'));
+
     app.use('/user/edit/:userid',
     authMW(objRepo),
     getUserMW(objRepo),
     saveUserMW(objRepo),
     renderMW(objRepo, 'edituser'));
+
     app.get('/user/del/:userid',
     authMW(objRepo),
     getUserMW(objRepo),
     delUserMW(objRepo));
+
     app.get('/user',
     authMW(objRepo),
     getUserMW(objRepo),
     getUserByEmailMW(objRepo),
-    renderMW(objRepo, 'login'));
+    renderMW(objRepo, 'orders_lin'));
     
+    app.use('/forgottenpw',
+    checkUserLoginMW(objRepo),
+    renderMW(objRepo, 'forgottenpw'));
+
+    app.use('/signin',
+    checkUserLoginMW(objRepo),
+    renderMW(objRepo, 'signin'));
+
+    app.use('/login',
+    checkUserLoginMW(objRepo),
+    renderMW(objRepo, 'login'));
+
     app.use('/order/userid/new',
     authMW(objRepo),
     getUserMW(objRepo),
     saveOrderMW(objRepo),
     renderMW(objRepo, 'neworders'));
+
     app.use('/order/:userid/edit/:orderid',
     authMW(objRepo),
     getUserMW(objRepo),
     getOrderMW(objRepo),
     saveOrderMW(objRepo),
     renderMW(objRepo, 'editorder'));
+
     app.get('/order/:userid/del/:orderid',
     authMW(objRepo),
     getUserMW(objRepo),
     getOrderMW(objRepo),
     delOrderMW(objRepo));
-    app.get('/order/:userid',
-    authMW(objRepo),
-    getUserMW(objRepo),
-    getOrderMW(objRepo),
-    getOrdersMW(objRepo),
+
+    app.use('/orders',
+    checkUserLoginMW(objRepo),
     renderMW(objRepo, 'orders'));
 
     app.use('/',
     checkUserLoginMW(objRepo),
-    sendPwMW(objRepo),
     renderMW(objRepo, 'index'));
 };

@@ -4,6 +4,7 @@ var app = express();
 app.set('view engine', 'ejs');
 
 app.use(express.static('static'));
+app.use(express.json());
 
 // Load routing
 require('./route/index')(app);
