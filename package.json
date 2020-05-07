@@ -12,6 +12,7 @@
     "autoprefixer": "^9.7.4",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "mongoose": "^5.9.10",
     "postcss-cli": "^7.1.0",
     "tailwindcss": "^1.2.0"

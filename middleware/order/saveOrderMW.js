@@ -6,7 +6,28 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
-    return function (req, res, next) {
-        next();
+const orderModel = requireOption(objectrepository, "orderModel");
+
+    return async function (req, res, next) {
+        if(typeof req.body.CPU === "undefined") {
+            return next();
+        }
+        if(typeof req.body.VGA === "undefined") {
+            return next();
+        }
+        if(typeof req.body.RAM === "undefined") {
+            return next();
+        }
+        if(typeof req.body.PSU === "undefined") {
+            return next();
+        }
+        const norder = new orderModel({
+            CPU: req.body.CPU,
+            VGA: req.body.VGA,
+            RAM: req.body.RAM,
+            PSU: req.body.PSU
+        });
+        await norder.save();
+        res.redirect("/orders");        
     };
 };

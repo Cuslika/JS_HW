@@ -2,7 +2,7 @@
 
     <ul style="float: right; padding: 50;" class="flex">
       <li style="position: absolute; left: 0" class="logo">
-        <a href="index">BigPP</a>
+        <a href="/">BigPP</a>
       </li>
       <li class="links">
         <a href="orders">Orders</a>
@@ -23,26 +23,26 @@
     </ul>
 
     <div style="position:fixed; margin-left: 37.5%; margin-top: 18.5%;">
-      <form>
+      <form action="/login" method="post">
         <div class="mb-3">
           <label class="login" for="username">
             Username
           </label>
-          <input class="rounded w-full py-2 px-3 leading-tight focus:outline-none" id="username" placeholder="Username">
+          <input class="rounded w-full py-2 px-3 leading-tight focus:outline-none" id="username" name="username" placeholder="Username">
         </div>
         <div class="mb-6">
           <label class="login" for="password">
             Password
           </label>
-          <input class="appearance-none  rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none" id="password" type="password" placeholder="******************">
+          <input class="appearance-none  rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none" id="username" name="password" type="password" placeholder="******************">
         </div>
         <div class="flex items-center justify-between">
-          <a class="loginbutton" href="orders_lin">
+          <button class="loginbutton">
             Log In
-          </a>
-          <a style="font-size: 25;" class="loginbutton" href="forgottenpw">
+          </button>
+          <button style="font-size: 25;" class="loginbutton">
             Forgot Password?
-          </a>
+          </button>
         </div>
       </form>
     </div>

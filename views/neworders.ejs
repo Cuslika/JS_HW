@@ -2,13 +2,13 @@
 
     <ul style="float: right; padding: 50;" class="flex">
       <li style="position: absolute; left: 0" class="logo">
-        <a href="mainpage_lin">BigPP</a>
+        <a href="/">BigPP</a>
       </li>
       <li class="links">
-        <a href="orders_lin">Orders</a>
+        <a href="/orders">Orders</a>
       </li>
       <li class="links">
-        <a href="index">Log Out</a>
+        <a href="/logout">Log Out</a>
       </li>
     </ul>
     <ul>
@@ -23,41 +23,41 @@
     </ul>
 
     <div style="position:fixed; margin-left: 37.5%; margin-top: 12.5%;">
-      <form>
+      <form action="/orders/new" method="post">
         <div class="mb-3">
           <label class="login" for="CPU">
             CPU
           </label>
-          <input class="rounded w-full py-2 px-3 leading-tight"/>
+          <input class="rounded w-full py-2 px-3 leading-tight" id="username" name="CPU"/>
         </div>
         <div class="mb-3">
-          <label class="login" for="CPU">
+          <label class="login" for="VGA">
             VGA
           </label>
-          <input class="rounded w-full py-2 px-3 leading-tight"/>
+          <input class="rounded w-full py-2 px-3 leading-tight" id="username" name="VGA"/>
         </div>
         <div class="mb-3">
-          <label class="login" for="CPU">
+          <label class="login" for="RAM">
             RAM
           </label>
-          <input class="rounded w-full py-2 px-3 leading-tight"/>
+          <input class="rounded w-full py-2 px-3 leading-tight" id="username" name="RAM"/>
         </div>
         <div class="mb-3">
-            <label class="login" for="CPU">
+            <label class="login" for="PSU">
               PSU
             </label>
-            <input class="rounded w-full py-2 px-3 leading-tight"/>
+            <input class="rounded w-full py-2 px-3 leading-tight" id="username" name="PSU"/>
           </div>
         <div class="flex items-center justify-between">
-          <a class="loginbutton" href="orders_lin">
+          <button class="loginbutton">
             Make New Order
-          </a>
+          </button>
         </div>
       </form>
     </div>
 
     <li style="position: absolute; left: 0; bottom: 25; padding: 50; font-size: 30;" class="ulogo">
-      <a>Logged In as: admin</a>
-    </li>
+      <a>Logged In as: <%= linuser %> </a>
+  </li>
 
 <%- include('footer') -%>

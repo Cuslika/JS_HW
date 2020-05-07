@@ -5,6 +5,8 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
+    const userModel = requireOption(objectrepository, 'userModel');
+
     return function (req, res, next) {
         next();
     };

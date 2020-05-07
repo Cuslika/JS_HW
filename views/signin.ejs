@@ -2,13 +2,13 @@
 
     <ul style="float: right; padding: 50;" class="flex">
       <li style="position: absolute; left: 0" class="logo">
-        <a href="index">BigPP</a>
+        <a href="/">BigPP</a>
       </li>
       <li class="links">
-        <a href="orders">Orders</a>
+        <a href="/orders">Orders</a>
       </li>
       <li class="links">
-        <a href="login">Log In</a>
+        <a href="/login">Log In</a>
       </li>
     </ul>
     <ul>
@@ -23,35 +23,35 @@
     </ul>
 
     <div style="position:fixed; margin-left: 37.5%; margin-top: 12.5%;">
-      <form>
+      <form action="/signin" method="post">
         <div class="mb-3">
           <label class="login" for="username">
             Choose Username
           </label>
-          <input class="rounded w-full py-2 px-3 leading-tight" id="username" placeholder="Username">
+          <input class="rounded w-full py-2 px-3 leading-tight" id="username" name="name" placeholder="Username">
         </div>
         <div class="mb-3">
           <label class="login" for="email">
             Your Email
           </label>
-          <input class="rounded w-full py-2 px-3 leading-tight" id="email" placeholder="Email">
+          <input class="rounded w-full py-2 px-3 leading-tight" id="email" name="email" placeholder="Email">
         </div>
         <div class="mb-3">
           <label class="login" for="password">
             Choose Password
           </label>
-          <input class="appearance-none  rounded w-full py-2 px-3 leading-tight" id="password" type="password" placeholder="******************">
+          <input class="appearance-none  rounded w-full py-2 px-3 leading-tight" id="password" name="password" type="password" placeholder="******************">
         </div>
         <div class="mb-6">
             <label class="login" for="password">
               Password Again
             </label>
-            <input class="appearance-none  rounded w-full py-2 px-3 leading-tight" id="password" type="password" placeholder="******************">
+            <input class="appearance-none  rounded w-full py-2 px-3 leading-tight" id="password" name="pwagain" type="password" placeholder="******************">
           </div>
         <div class="flex items-center justify-between">
-          <a class="loginbutton" href="orders_lin">
+          <button class="loginbutton">
             Create account
-          </a>
+          </button>
         </div>
       </form>
     </div>
