@@ -22,6 +22,7 @@ module.exports = function (objectrepository) {
         }
         req.session.loggedin = true;
         req.session.linuser = req.body.username;
+        req.session.uid = fuser._id;
         console.log(req.body.username);
         req.session.save(function(error){
             res.redirect("/orders");

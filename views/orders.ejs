@@ -22,6 +22,30 @@
         </p>
       </li>
     </ul>
+
+    <table>
+      <tr class="table-header-line">
+        <td style="font-family: 'Wallpoet'; font-size: 45;">
+          Name
+        </td>
+        <td style="font-family: 'Wallpoet'; font-size: 45;">
+          Orders
+        </td>
+      </tr>
+      <% orders.forEach(function(order){ %>
+      <tr>
+        <td>
+          <%= order.name %>
+        </td>
+        <td>
+          <%= order.CPU %> <br />
+          <%= order.VGA %> <br />
+          <%= order.RAM %> <br />
+          <%= order.PSU %>  
+        </td>
+      </tr>
+      <% }); %>
+    </table>
 <% } %>
 
 <% if(loggedin) { %>
@@ -46,32 +70,41 @@
       </p>
     </li>
   </ul>
+
+  <table>
+    <tr class="table-header-line">
+      <td style="font-family: 'Wallpoet'; font-size: 45;">
+        Name
+      </td>
+      <td style="font-family: 'Wallpoet'; font-size: 45;">
+        Orders
+      </td>
+    </tr>
+    <% orders.forEach(function(order){ %>
+    <tr>
+      <td>
+        <%= order.name %>
+      </td>
+      <td>
+        <%= order.CPU %> <br />
+        <%= order.VGA %> <br />
+        <%= order.RAM %> <br />
+        <%= order.PSU %>  
+      </td>
+      <% if(linuser === order.name) { %>
+        <td>
+          <a href="/orders/del/<%= order._id %>">
+            <img src="/static/src/img/delete.png" height="40px" width="40px">
+          </a>
+        </td>
+        <% } %>
+    </tr>
+    <% }); %>
+  </table>
+
+  <li style="position: absolute; left: 0; bottom: 25; padding: 50; font-size: 30;" class="ulogo">
+    <a>Logged In as: <%= linuser %> </a>
+</li>
 <% } %>
 
-    <table>
-      <tr class="table-header-line">
-        <td style="font-family: 'Wallpoet'; font-size: 45;">
-          Name
-        </td>
-        <td style="font-family: 'Wallpoet'; font-size: 45;">
-          Orders
-        </td>
-      </tr>
-      <% orders.forEach(function(order){ %>
-      <tr>
-        <td>
-        </td>
-        <td>
-          <%= order.CPU %> <br />
-          <%= order.GPU %> <br />
-          <%= order.RAM %> <br />
-          <%= order.PSU %>  
-        </td>
-      </tr>
-      <% }); %>
-    </table>
-
-    <li style="position: absolute; left: 0; bottom: 25; padding: 50; font-size: 30;" class="ulogo">
-      <a>Logged In as: <%= linuser %> </a>
-  </li>
 <%- include('footer') -%>

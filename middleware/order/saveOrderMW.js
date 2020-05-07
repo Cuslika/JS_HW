@@ -21,11 +21,13 @@ const orderModel = requireOption(objectrepository, "orderModel");
         if(typeof req.body.PSU === "undefined") {
             return next();
         }
+        console.log(req.session.uid);
         const norder = new orderModel({
             CPU: req.body.CPU,
             VGA: req.body.VGA,
             RAM: req.body.RAM,
-            PSU: req.body.PSU
+            PSU: req.body.PSU,
+            _placed: req.session.uid
         });
         await norder.save();
         res.redirect("/orders");        

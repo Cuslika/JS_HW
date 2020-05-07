@@ -10,11 +10,13 @@ module.exports = function (objectrepository) {
     return async function (req, res, next) {
         const orders = await orderModel.find({});
         const norders = await Promise.all(orders.map(async function(o) {
+            console.log(o._doc);
             const user = await userModel.findOne({
                 _id: o._placed
             });
             return {
-                ...o._doc,name: user.name
+                ...o._doc,
+                name: user.name
             }
         }));
         res.locals.orders = norders;

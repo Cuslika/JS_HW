@@ -5,7 +5,9 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
-    return function (req, res, next) {
-        next();
+    return async function (req, res, next) {
+        const orderModel = requireOption(objectrepository, "orderModel");
+        await orderModel.deleteOne({_id: req.params.orderid});
+        res.redirect("/orders");
     };
 };
