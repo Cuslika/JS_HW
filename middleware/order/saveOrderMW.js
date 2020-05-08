@@ -9,16 +9,7 @@ module.exports = function (objectrepository) {
 const orderModel = requireOption(objectrepository, "orderModel");
 
     return async function (req, res, next) {
-        if(typeof req.body.CPU === "undefined") {
-            return next();
-        }
-        if(typeof req.body.VGA === "undefined") {
-            return next();
-        }
-        if(typeof req.body.RAM === "undefined") {
-            return next();
-        }
-        if(typeof req.body.PSU === "undefined") {
+        if(typeof req.body.CPU === "undefined" || typeof req.body.VGA === "undefined" || typeof req.body.VGA === "undefined" || typeof req.body.PSU === "undefined") {
             return next();
         }
         console.log(req.session.uid);

@@ -9,12 +9,10 @@ module.exports = function (objectrepository) {
     const userModel = requireOption(objectrepository, "userModel");
 
     return async function (req, res, next) {
-        if(typeof req.body.name === "undefined") {
+        if(typeof req.body.name === "undefined" || typeof req.body.password === "undefined") {
             return next();
         }
-        if(typeof req.body.password === "undefined") {
-            return next();
-        }
+        
         const nuser = new userModel({
             name: req.body.name,
             email: req.body.email,

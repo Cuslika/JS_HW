@@ -5,12 +5,11 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
-    const orderModel = requireOption(objectrepository, 'orderModel');
-    const userModel = requireOption(objectrepository, 'userModel');
     return async function (req, res, next) {
+        const orderModel = requireOption(objectrepository, 'orderModel');
+        const userModel = requireOption(objectrepository, 'userModel');
         const orders = await orderModel.find({});
         const norders = await Promise.all(orders.map(async function(o) {
-            console.log(o._doc);
             const user = await userModel.findOne({
                 _id: o._placed
             });
@@ -20,6 +19,7 @@ module.exports = function (objectrepository) {
             }
         }));
         res.locals.orders = norders;
+        console.log(norders);
         return next();
     };
 };

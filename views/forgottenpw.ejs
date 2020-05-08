@@ -2,13 +2,13 @@
 
     <ul style="float: right; padding: 50;" class="flex">
       <li style="position: absolute; left: 0" class="logo">
-        <a href="index">BigPP</a>
+        <a href="/">BigPP</a>
       </li>
       <li class="links">
-        <a href="orders">Orders</a>
+        <a href="/orders">Orders</a>
       </li>
       <li class="links">
-        <a href="signin">Sign In</a>
+        <a href="/signin">Sign In</a>
       </li>
     </ul>
     <ul>
@@ -23,17 +23,17 @@
     </ul>
 
     <div style="position:fixed; margin-left: 37.5%; margin-top: 18.5%;">
-      <form>
+      <form action="/forgottenpw" method="post">
         <div class="mb-3">
           <label class="login" for="email">
             Email Address
           </label>
-          <input style="background-color: #424242;"class="rounded w-full py-2 px-3 leading-tight focus:outline-none" id="email" placeholder="Email">
+          <input style="background-color: #424242;"class="rounded w-full py-2 px-3 leading-tight focus:outline-none" name="email" id="email" placeholder="Email">
         </div>       
         <div class="flex items-center justify-between">
-          <a style="font-size: 25;" class="loginbutton">
+          <button style="font-size: 25;" class="loginbutton">
             Send Password
-          </a>
+          </button>
         </div>
       </form>
     </div>

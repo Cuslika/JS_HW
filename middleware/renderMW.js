@@ -11,6 +11,7 @@ module.exports = function (objectrepository, viewName) {
         }
         else {
             res.locals.loggedin = req.session.loggedin;
+            res.locals.loggedinadmin = req.session.loggedinadmin;
             res.locals.linuser = req.session.linuser;
         }
         res.render(viewName);

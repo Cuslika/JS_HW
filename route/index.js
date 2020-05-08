@@ -1,4 +1,3 @@
-const authMW = require('../middleware/auth/authMW');
 const checkUserLoginMW = require('../middleware/auth/checkUserLoginMW');
 const logoutMW = require('../middleware/auth/logoutMW');
 const sendPwMW = require('../middleware/auth/sendPwMW');
@@ -6,6 +5,7 @@ const sendPwMW = require('../middleware/auth/sendPwMW');
 const renderMW = require('../middleware/renderMW');
 
 const delOrderMW = require('../middleware/order/delOrderMW');
+const editOrderMW = require('../middleware/order/editOrderMW');
 const getOrdersMW = require('../middleware/order/getOrdersMW');
 const saveOrderMW = require('../middleware/order/saveOrderMW');
 
@@ -21,12 +21,20 @@ module.exports = function(app) {
         userModel: userModel
     };
     
+    app.use('/orders/edit/:orderid',
+        function(req, res, next){
+            res.locals.orderid = req.params.orderid;
+            return next();
+        },
+        editOrderMW(objRepo),
+        renderMW(objRepo, 'editorder'));
+
     app.get('/orders/del/:orderid',
         delOrderMW(objRepo));
     
     app.use('/orders/new',
         saveOrderMW(objRepo),
-        renderMW(objRepo, "neworders"));
+        renderMW(objRepo, 'neworders'));
 
     app.use('/orders', 
         getOrdersMW(objRepo),
@@ -38,13 +46,12 @@ module.exports = function(app) {
 
     app.use('/login',
         checkUserLoginMW(objRepo),
-        //sendPwMW(objRepo),
         renderMW(objRepo, 'login'));
 
     app.use('/forgottenpw',
         getUserByEmailMW(objRepo),
         sendPwMW(objRepo),
-        renderMW('forgottenpw'));
+        renderMW(objRepo, 'forgottenpw'));
 
     app.use('/signin',
         saveUserMW(objRepo),
