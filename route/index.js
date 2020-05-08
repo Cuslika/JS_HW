@@ -6,6 +6,7 @@ const renderMW = require('../middleware/renderMW');
 
 const delOrderMW = require('../middleware/order/delOrderMW');
 const editOrderMW = require('../middleware/order/editOrderMW');
+const getOrderMW = require('../middleware/order/getOrderMW');
 const getOrdersMW = require('../middleware/order/getOrdersMW');
 const saveOrderMW = require('../middleware/order/saveOrderMW');
 
@@ -22,10 +23,7 @@ module.exports = function(app) {
     };
     
     app.use('/orders/edit/:orderid',
-        function(req, res, next){
-            res.locals.orderid = req.params.orderid;
-            return next();
-        },
+        getOrderMW(objRepo),
         editOrderMW(objRepo),
         renderMW(objRepo, 'editorder'));
 

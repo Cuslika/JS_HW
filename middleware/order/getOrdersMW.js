@@ -19,7 +19,6 @@ module.exports = function (objectrepository) {
             }
         }));
         res.locals.orders = norders;
-        console.log(norders);
         return next();
     };
 };

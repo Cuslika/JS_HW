@@ -8,21 +8,17 @@ module.exports = function (objectrepository) {
         const orderModel = requireOption(objectrepository, "orderModel");
 
         if(typeof req.body.CPU === "undefined" || typeof req.body.VGA === "undefined" || typeof req.body.VGA === "undefined" || typeof req.body.PSU === "undefined") {
+            console.log("SZAR");
             return next();
         }
-        else{
-            const temporder = await orderModel.findOne({
-                _id: req.params.orderid
-            });
     
-            temporder.CPU = req.body.CPU;
-            temporder.VGA = req.body.VGA;
-            temporder.RAM = req.body.RAM;
-            temporder.PSU = req.body.PSU;        
+        res.locals.order.CPU = req.body.CPU;
+        res.locals.order.VGA = req.body.VGA;
+        res.locals.order.RAM = req.body.RAM;
+        res.locals.order.PSU = req.body.PSU;        
     
-            await temporder.save();
-            res.redirect("/orders");
-        }
+        await res.locals.order.save();
+        res.redirect("/orders");
         
     };
 };
