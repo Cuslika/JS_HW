@@ -6,7 +6,7 @@ const requireOption = require('../requireOption');
 module.exports = function (objectrepository) {
     return function (req, res, next) {
 
-        if(res.locals.user === null){
+        if(res.locals.user === null || typeof res.locals.user === 'undefined'){
             console.log("There is no user with that email adress!");
             return next();
         }

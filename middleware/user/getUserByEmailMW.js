@@ -5,10 +5,8 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
-    const userModel = requireOption(objectrepository, 'userModel');
-
     return async function (req, res, next) {
-
+        const userModel = requireOption(objectrepository, 'userModel');
         if(typeof req.body.email === 'undefined') {
             console.log("No email adress was given!")
             return next();
